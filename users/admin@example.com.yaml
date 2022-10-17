@@ -1,0 +1,8 @@
+name: admin
+super: true
+id: 213671a7-a6dd-44e7-8b06-d90b489fce16
+password_hash: $2y$10$WvySA1iy1tUuDEXOpS9Y7e8JAAhb5SKWAKisrlmJ2wvGXxfdqJx/m
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing

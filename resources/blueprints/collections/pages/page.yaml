@@ -1,0 +1,112 @@
+title: Page
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
+        field:
+          type: markdown
+          display: Content
+          localizable: true
+      -
+        handle: author
+        field:
+          type: users
+          display: Author
+          default: current
+          localizable: true
+          max_items: 1
+      -
+        handle: template
+        field:
+          type: template
+          display: Template
+          localizable: true
+      -
+        handle: replicator_field
+        field:
+          collapse: false
+          previews: true
+          sets:
+            validation_set:
+              display: 'Validation Set'
+              fields:
+                -
+                  handle: foo
+                  field:
+                    mode: default
+                    create: true
+                    collections:
+                      - pages
+                    display: Foo
+                    type: entries
+                    icon: entries
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    always_save: false
+                -
+                  handle: bar
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Bar
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    validate:
+                      - required
+                      - sometimes
+                    always_save: false
+                    if:
+                      foo: 'equals empty'
+                    instructions: 'Should be only required when visible'
+            text_set:
+              display: 'Text Set'
+              fields:
+                -
+                  handle: text_field
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Text Field'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    always_save: false
+          display: 'Replicator Field'
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - pages
+          max_items: 1
+          listable: false
+          localizable: true
